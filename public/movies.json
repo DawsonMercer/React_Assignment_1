@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Movie 1",
+        "date": "1/1/2022",
+        "actors": ["Abby", "Bob"],
+        "poster": "images/movie1.jpg",
+        "rating": 5
+    },
+    {
+        "name": "Movie 2",
+        "date": "2/2/2022",
+        "actors": ["Babby", "Carlos"],
+        "poster": "images/movie2.jpg",
+        "rating": 4
+    }
+
+
+
+]
