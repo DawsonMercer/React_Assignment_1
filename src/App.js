@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { Home, Reviews, Form, Whoops404, Navigation } from "./pages";
+import Button from "react-bootstrap/Button"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 function App() {
@@ -21,7 +23,6 @@ function App() {
   if (movies){
     return (
       <div className="App">
-        <h1>Dawson's React Movie Reviews App</h1>
         <Navigation />
         <Routes>
           <Route path='/' element={<Home />}/>
