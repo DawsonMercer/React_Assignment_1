@@ -22,6 +22,7 @@ function App() {
     return (
       <div className="App">
         <h1>Dawson's React Movie Reviews App</h1>
+        
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/reviews' element={<Reviews movies={movies} setMovies={setMovies} 
