@@ -5,28 +5,38 @@ import { Home, Reviews, Form, Whoops404 } from "./pages";
 
 
 function App() {
-  let movies = {};
+  const [movies, setMovies ] = useState(null);
 
   useEffect( ()=>{
     //load JSON data
     fetch("./movies.json")
     .then(response => response.json())
-    .then(json =>console.log(json))
-    .then(e=> console.log(e.message));
+    .then(setMovies)
+    .then(console.log(movies))
+    .catch(e=> console.log(e.message));
   },[])
+  // NEED TO USE USE STATE THUS USE USE STATE HOOK BECAUSE WE WANT TO REFRESH
+  if(!movies) return null;
 
-  return (
-    <div className="App">
-      <h1>Dawson's React Movie Reviews App</h1>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/reviews' element={<Reviews />}/>
-        <Route path='/form' element={<Form />}/>
-        <Route path='*' element={<Whoops404 />}/>
-      </Routes>
+  if (movies){
+    return (
+      <div className="App">
+        <h1>Dawson's React Movie Reviews App</h1>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/reviews' element={<Reviews movies={movies} setMovies={setMovies} 
+          onRemove = {(name) =>{
+            const updatedMovieList = movies.filter((movie)=> movie.name !== name);
+            setMovies(updatedMovieList);
+          }}
+          />}/>
+          <Route path='/form' element={<Form />}/>
+          <Route path='*' element={<Whoops404 />}/>
+        </Routes>
 
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
